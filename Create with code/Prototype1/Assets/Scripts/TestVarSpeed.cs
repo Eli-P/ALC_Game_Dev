@@ -31,7 +31,7 @@ public class TestVarSpeed : MonoBehaviour
 
         if (forwardInput < 0 && momentum > 0)
         {
-            momentum /= momentop *2;
+            momentum /= 10;
         }
         else
         {
