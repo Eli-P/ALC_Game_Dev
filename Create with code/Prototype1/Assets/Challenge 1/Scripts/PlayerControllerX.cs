@@ -8,16 +8,20 @@ public class PlayerControllerX : MonoBehaviour
     public float rotationSpeed;
     public float verticalInput;
     public float horizontalInput;
+    public float gravity;
     public float Jump;
     public int boost;
     public float boostf = 5.0f;
     private float non;
     public int charge;
+    public Rigidbody rb;
+    public int momentum;
+    public int takeoffSpd = 100;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        Rigidbody rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -72,8 +76,15 @@ public class PlayerControllerX : MonoBehaviour
             }
         }
         transform.Translate(Vector3.forward * speed / 100 * boost);
+        transform.Rotate(Vector3.up * horizontalInput);
 
         // tilt the plane up/down based on up/down arrow keys
         transform.Rotate(Vector3.right * rotationSpeed * Time.deltaTime * verticalInput);
+        momentum = (int)(1 * speed / 100 * boost);
+        if (verticalInput == 1.0)
+        {
+            rb.useGravity = false;
+        }
+
     }
 }
