@@ -28,6 +28,7 @@ public class TestVarSpeed : MonoBehaviour
         // We'll move the vehical forward
         transform.Translate(Vector3.forward * Time.deltaTime * speed * momentum);
         transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
+        
 
         if (forwardInput < 0 && momentum > 0)
         {

@@ -10,18 +10,20 @@ public class PlayerControllerX : MonoBehaviour
     public float horizontalInput;
     public float gravity;
     public float Jump;
+    public float boostK;
     public int boost;
     public float boostf = 5.0f;
     private float non;
     public int charge;
     public Rigidbody rb;
-    public int momentum;
+    public float momentum;
     public int takeoffSpd = 100;
 
     // Start is called before the first frame update
     void Start()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
+        rb.useGravity = true;
     }
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class PlayerControllerX : MonoBehaviour
         Jump = Input.GetAxis("Jump");
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
+        boostK = Input.GetAxis("Fire1");
         if (boostf < 0)
         {
             charge = 0;
@@ -40,7 +43,7 @@ public class PlayerControllerX : MonoBehaviour
             charge = 1;
         }
         // move the plane forward at a constant rate
-        if (Jump > 0 && boostf > non && charge == 1)
+        if (boostK > 0 && boostf > non && charge == 1)
         {
             if (charge == 1)
             {
@@ -75,15 +78,19 @@ public class PlayerControllerX : MonoBehaviour
                 charge = 1;
             }
         }
-        transform.Translate(Vector3.forward * speed / 100 * boost);
-        transform.Rotate(Vector3.up * horizontalInput);
+        transform.Translate(Vector3.forward * speed / 100 * boost * Jump);
+        transform.Rotate(Vector3.forward * horizontalInput * -1);
 
         // tilt the plane up/down based on up/down arrow keys
         transform.Rotate(Vector3.right * rotationSpeed * Time.deltaTime * verticalInput);
-        momentum = (int)(1 * speed / 100 * boost);
-        if (verticalInput == 1.0)
+        momentum = 1 * speed / 1000;
+        if (Jump == 1.0f)
         {
             rb.useGravity = false;
+        }
+        if (Jump <= 0.5f)
+        {
+            rb.useGravity = true;
         }
 
     }
