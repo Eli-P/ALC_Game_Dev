@@ -30,10 +30,10 @@ public class PlayerControllerX : MonoBehaviour
     void FixedUpdate()
     {
         // get the user's vertical input
-        Jump = Input.GetAxis("Jump");
+        Jump = Input.GetAxis("Fire3");
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
-        boostK = Input.GetAxis("Fire1");
+        boostK = Input.GetAxis("Fire2");
         if (boostf < 0)
         {
             charge = 0;
@@ -77,6 +77,10 @@ public class PlayerControllerX : MonoBehaviour
             {
                 charge = 1;
             }
+        }
+        if (Jump < 0)
+        {
+            Jump = 0;
         }
         transform.Translate(Vector3.forward * speed / 100 * boost * Jump);
         transform.Rotate(Vector3.forward * horizontalInput * -1);

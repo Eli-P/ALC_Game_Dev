@@ -7,11 +7,8 @@ public class PlayerController : MonoBehaviour
     public float HorizontalInput;
     public float speed = 15f;
     public float xRange = 15f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    public GameObject food;
 
     // Update is called once per frame
     void Update()
@@ -26,6 +23,10 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
         transform.Translate(Vector3.right * HorizontalInput * Time.deltaTime * speed);
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeydown(KeyCode.Space))
+        {
+            Instantiate(food, transform.position, food.transform.rotation);
+        }
 
     }
 }
