@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
         transform.Translate(Vector3.right * HorizontalInput * Time.deltaTime * speed);
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeydown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(food, transform.position, food.transform.rotation);
         }

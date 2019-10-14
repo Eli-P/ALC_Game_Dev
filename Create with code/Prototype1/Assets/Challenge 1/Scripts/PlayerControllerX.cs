@@ -18,6 +18,7 @@ public class PlayerControllerX : MonoBehaviour
     public Rigidbody rb;
     public float momentum;
     public int takeoffSpd = 100;
+    public GameObject bullet;
 
     // Start is called before the first frame update
     void Start()
@@ -95,6 +96,10 @@ public class PlayerControllerX : MonoBehaviour
         if (Jump <= 0.5f)
         {
             rb.useGravity = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0))
+        {
+            Instantiate(bullet, transform.position, transform.rotation);
         }
 
     }
