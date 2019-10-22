@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float xRange = 15f;
 
     public GameObject food;
-
+    Vector3 dist = new Vector3(0, 0.2f, 0);
     // Update is called once per frame
     void Update()
     {
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.right * HorizontalInput * Time.deltaTime * speed);
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(food, transform.position, food.transform.rotation);
+            Instantiate(food, transform.position + dist, food.transform.rotation);
         }
 
     }
