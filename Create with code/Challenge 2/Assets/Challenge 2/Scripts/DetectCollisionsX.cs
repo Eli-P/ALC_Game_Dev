@@ -10,7 +10,7 @@ public class DetectCollisionsX : MonoBehaviour
         Debug.Log("Game Over!");
         Destroy(gameObject);
         Destroy(other.gameObject);
-        Destroy(spawner);
+        
     }
 
 }
