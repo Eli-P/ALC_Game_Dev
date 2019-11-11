@@ -440,8 +440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 10
-  gravityMod: 1
-  isOnGround: 0
+  gravityMod: 1.5
+  isOnGround: 1
 --- !u!1 &112120
 GameObject:
   m_ObjectHideFlags: 0
