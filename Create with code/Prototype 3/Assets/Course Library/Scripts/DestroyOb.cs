@@ -15,4 +15,9 @@ public class DestroyOb : MonoBehaviour
     {
         
     }
+    private void OnCollisionEnter(UnityEngine.Collision collision)
+    {
+        
+    }
+
 }
