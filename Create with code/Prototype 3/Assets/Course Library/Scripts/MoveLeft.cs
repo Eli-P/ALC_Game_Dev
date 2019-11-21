@@ -15,10 +15,10 @@ public class MoveLeft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerControllerscript.GameOver == false)
-        {
+        //if (PlayerControllerscript.GameOver == false)
+        //{
             transform.Translate(Vector3.left * Time.deltaTime * speed);
-        }
+        //}
         if(transform.position.y < -10)
         {
             Destroy(gameObject);
