@@ -24,11 +24,11 @@ public class SpawnManager : MonoBehaviour
     }
     void SpawnObstacle()
     {
-        //if (playerControllerScript.GameOver == false)
-        //{
+        if (!playerControllerScript.GameOver)
+        {
             Instantiate(obstacle, spawnPos, obstacle.transform.rotation);
 
-        //}
+        }
 
     }
 }

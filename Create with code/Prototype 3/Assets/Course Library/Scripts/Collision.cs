@@ -59,7 +59,7 @@ public class Collision : MonoBehaviour
             }
             if (dirty)
             {
-                Instantiate(dirt, spawnPos, obstacle.transform.rotation);
+                //Instantiate(dirt, spawnPos, obstacle.transform.rotation);
                 dirty = false;
             }
         }

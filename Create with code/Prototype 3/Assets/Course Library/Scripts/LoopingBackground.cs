@@ -19,10 +19,9 @@ public class LoopingBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x < startpos.x - repeatWidth && playerControllerScript.GameOver == false)
+        if (transform.position.x < startpos.x - repeatWidth)
         {
             transform.position = startpos;
         }
-
     }
 }

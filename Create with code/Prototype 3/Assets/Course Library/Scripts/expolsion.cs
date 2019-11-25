@@ -18,7 +18,7 @@ public class expolsion : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<PlayerController>();
         if (player.transform.position.y > .1)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }
