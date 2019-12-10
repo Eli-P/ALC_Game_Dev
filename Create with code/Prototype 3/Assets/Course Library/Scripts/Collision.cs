@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collision : MonoBehaviour
+public class Collider : MonoBehaviour
 {
     private Rigidbody playerRb;
     public ParticleSystem explosion;
@@ -86,7 +86,7 @@ public class Collision : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collider collision)
     {
         if (collision.CompareTag("Obstacle"))
         {
@@ -94,7 +94,7 @@ public class Collision : MonoBehaviour
         }
         isOnGround = true;
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(UnityEngine.Collider other)
     {
         if (other.CompareTag("Obstacle"))
         {
