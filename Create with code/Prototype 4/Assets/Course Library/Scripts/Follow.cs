@@ -7,6 +7,7 @@ public class Follow : MonoBehaviour
     public float speed;
     private Rigidbody enemyRb;
     private GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,11 @@ public class Follow : MonoBehaviour
     void Update()
     {
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
-
+        
         enemyRb.AddForce(lookDirection * speed);
+        if (gameObject.transform.position.y < -1)
+        {
+            Destroy(gameObject);
+        }
     }
 }
