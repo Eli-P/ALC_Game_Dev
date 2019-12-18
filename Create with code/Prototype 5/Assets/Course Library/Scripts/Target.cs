@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class Target : MonoBehaviour
 {
     private Rigidbody targetrb;
@@ -10,9 +10,15 @@ public class Target : MonoBehaviour
     private float maxTorque = 10;
     private float xRange = 4;
     private float ySpawnPos = -6;
+    private GameManager gameManager;
+    public int pointValue;
+    public ParticleSystem boom;
+    public TextMeshProUGUI gameOver;
     // Start is called before the first frame update
     void Start()
     {
+
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         targetrb = GetComponent<Rigidbody>();
         targetrb.AddForce(RandomForce(), ForceMode.Impulse);
         targetrb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
@@ -30,9 +36,18 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
+        Instantiate(boom, transform.position, boom.transform.rotation);
+        gameManager.UpdateScore(pointValue);
     }
     private void OnTriggerEnter(Collider other)
     {
+
+        Destroy(gameObject);
+        if (!gameObject.CompareTag("Bad"))
+        {
+            gameManager.GameOver();
+            gameOver.gameObject.SetActive(true);
+        }
         Destroy(gameObject);
     }
 }
